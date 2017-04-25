@@ -1,0 +1,14 @@
+# loan_calc_messages.yml
+
+title: "LOAN CALCULATOR"
+valid_name: "Make sure to enter a valid name."
+loan_amt: "Please input the amount of your loan in USD:"
+loan_dur: "Please input the duration of your loan in years:"
+apr_prompt: "Please input the Annual Percentage Rate as a decimal (0.0 - 100.0%):"
+valid_number: "Hmm... that doesn't seem like a valid number."
+month_pay: "Your monthly payment amount is:"
+months_dur: "Your loan duration (in months) is:"
+month_inter: "Your monthly interest rate is:"
+again: "Would you like to calculate another fixed loan? (Y or N):"
+valid_again: "Please type either 'Y' or 'N'."
+bye: "Thank you for using the Loan Calculator!"
