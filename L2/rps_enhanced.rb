@@ -14,7 +14,7 @@ def clear_screen
   system('cls')
 end
 
-def prompt_options
+def prompt_selection
   loop do
     prompt("Choose one: #{OPTIONS.join(', ')}")
     choice = gets.chomp.strip.downcase
@@ -23,14 +23,14 @@ def prompt_options
   end
 end
 
-def set_up_choice
+def sample_choice
   VALID_CHOICES.sample
 end
 
 def who_won(player, computer)
   winner = 'player' if WIN_CONDITIONS.include?(player + computer)
   winner = 'computer' if WIN_CONDITIONS.include?(computer + player)
-  winner ? winner : 'tie'
+  winner || 'tie'
 end
 
 def print_choices(player, computer)
@@ -50,7 +50,7 @@ def play_again?
   loop do
     prompt('Do you want to go again? (Y or N)')
     answer = gets.chomp.downcase.strip
-    return choice if %w(y yes).include?(answer)
+    return answer if %w(y yes).include?(answer)
     return false if %w(n no).include?(answer)
     prompt('Please chose either Y or N.')
   end
@@ -70,8 +70,9 @@ end
 
 def display_score(scores)
   puts ''
-  scores.values_at('player', 'computer').each do |score|
-    prompt("#{scores.key(score)} score: #{score}")
+  scores.each do |who, score|
+    next if who == 'tie'
+    prompt("#{who} score: #{score}")
   end
   puts ''
 end
@@ -80,8 +81,8 @@ loop do
   scores = { 'player' => 0, 'computer' => 0, 'tie' => 0 }
 
   loop do
-    player_choice = prompt_options
-    computer_choice = set_up_choice
+    player_choice = prompt_selection
+    computer_choice = sample_choice
 
     print_choices(player_choice, computer_choice)
 
