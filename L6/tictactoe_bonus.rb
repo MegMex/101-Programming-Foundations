@@ -15,7 +15,7 @@ def prompt(msg)
   puts "=> #{msg}"
 end
 
-# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 def display_board(brd)
   system('cls')
   puts "Play to 5!"
@@ -34,7 +34,7 @@ def display_board(brd)
   puts '     |     |     '
   puts ''
 end
-# rubocop:disable Metrics/AbcSize
+# rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
 def initialize_board
   new_board = {}
@@ -167,7 +167,7 @@ def exit_game?
   loop do
     prompt "Play again? (y or n)"
     answer = gets.chomp
-    if %w(y n).include?(answer.downcase)
+    if %w[y n].include?(answer.downcase)
       break
     else
       prompt "Type y to play again or n to exit"
